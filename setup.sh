@@ -1,12 +1,16 @@
 #cluster
 #export MINIKUBE_HOME=~/goinfre
 
-#minikube setting
+#minikube set
 echo "Minikube start..."
 minikube start --driver=virtualbox
 #eval $(minikube docker-env)
 
 minikube dashboard & > /dev/null
+
+#metallb
+minikube addons enable metallb
+#kubectl apply -f ./srcs/metallb/metallb.yaml
 
 #nginx
 cd ./srcs/nginx
