@@ -1,15 +1,13 @@
 FROM		alpine:3.12.0
 
-RUN		apk update; \
-		apk add --no-cache nginx
+RUN		apk add --no-cache nginx
 
-COPY		/wordpress.tar.gz /
+COPY		/phpmyadmin.tar.gz /
 #COPY		/default.conf /etc/nginx/conf.d/
 COPY		/set.sh /usr/sbin/set.sh
 
 RUN		chmod 777 /usr/sbin/set.sh
 
-EXPOSE		5050
+EXPOSE		5000
 
-ENTRYPOINT	["sh", "/usr/sbin/set.sh"]
-
+ENTRYPOINT	[ "/usr/sbin/set.sh" ]
